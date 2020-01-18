@@ -47,7 +47,6 @@ class _PageViewwState extends State<PageVieww> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     bool w;
-    print(height);
     if (height < 650) {
       w = true;
     } else {
@@ -66,7 +65,7 @@ class _PageViewwState extends State<PageVieww> {
           },
         ),
         Container(
-          height: w ? height / 1.34 : height / 1.32,
+          height: w ? height / 1.41 : height / 1.35,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -74,8 +73,6 @@ class _PageViewwState extends State<PageVieww> {
               Provider.of<CitiesProvider>(context).listCities.isEmpty
                   ? Container()
                   : Text(
-                      // Provider.of<CitiesProvider>(context).listCities.tempRound(),
-                      // 'درجة الحرارة الحالية' +
                       Appconfig.prefs
                               .getDouble('currentTemp')
                               .round()
@@ -126,7 +123,6 @@ class Centerr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Stack(
       children: <Widget>[
         Container(

@@ -6,9 +6,20 @@ import 'package:taqspalestine/Utils/MyColo.dart';
 import 'package:taqspalestine/Utils/Taqs.dart';
 import 'package:taqspalestine/Utils/localNotif.dart';
 import 'package:taqspalestine/Utils/locator.dart';
+import 'package:taqspalestine/Views/AboutPage.dart';
+import 'package:taqspalestine/Views/FirstPage/FirstPage.dart';
+import 'package:taqspalestine/Views/GeneralPage.dart';
+import 'package:taqspalestine/Views/GraphPage.dart';
+import 'package:taqspalestine/Views/NotifPage.dart';
+import 'package:taqspalestine/Views/TaqsDetail.dart';
+import 'package:taqspalestine/Views/YourCityPage.dart';
+import 'package:taqspalestine/Views/splash.dart';
 import 'package:taqspalestine/provider_setup.dart';
+import 'package:admob_flutter/admob_flutter.dart';
+import 'package:taqspalestine/test_connection.dart';
 
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Appconfig.prefs = await SharedPreferences.getInstance();
   bool _seen = (Appconfig.prefs.getBool('seen') ?? false);
   if (_seen) {
@@ -23,11 +34,13 @@ Future main() async {
   }
   setupLocator();
 
-  SystemChrome.setEnabledSystemUIOverlays([]);
-  // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+  // SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  // Admob.initialize(getAppId());
   return runApp(MyApp());
 }
 
@@ -59,19 +72,19 @@ class _AppState extends State<App> {
         primaryColor: MyColo.color_bodyLight,
         fontFamily: 'Changa',
       ),
-      home: LocalNotif(),
+      // home: YourCityPage(),
       debugShowCheckedModeBanner: false,
-      // initialRoute: '/',
-      // routes: {
-      //   '/': (context) => FirstPage(),
-      //   // '/': (context) => GraphPage(),
-      //   '/detail': (context) => TaqsDetails(),
-      //   '/graph': (context) => GraphPage(),
-      //   '/notif': (context) => NotifPage(),
-      //   '/general': (context) => GeneralPage(),
-      //   '/city': (context) => YourCityPage(),
-      //   '/about': (context) => AboutPage(),
-      // },
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Splashs(),
+        '/Home': (context) => FirstPage(),
+        '/detail': (context) => TaqsDetails(),
+        '/graph': (context) => GraphPage(),
+        '/notif': (context) => NotifPage(),
+        '/general': (context) => GeneralPage(),
+        '/city': (context) => YourCityPage(),
+        '/about': (context) => AboutPage(),
+      },
     );
   }
 }

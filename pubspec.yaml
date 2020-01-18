@@ -26,10 +26,12 @@ dependencies:
   get_it: ^3.0.3
   dots_indicator: ^1.1.0
   auto_size_text: ^2.1.0
-  firebase_admob:
+  admob_flutter: ^0.3.4
   responsive_widgets: ^0.1.10
   flutter_local_notifications:
   path_provider:
+
+  connectivity: ^0.4.6+2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

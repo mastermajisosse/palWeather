@@ -21,24 +21,17 @@ class _MapWidState extends State<MapWid> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    // ResponsiveWidgets().init(context,
-    //     referenceHeight: 1920, // Optional
-    //     referenceWidth: 1080, // Optional
-    //     referenceShortestSide: 411 // Optional, default = 360
-    //   );
     double w;
-    print(height);
+    // print(height);
     if (height < 650) {
-      w = 0;
+      w = 0 + 5.0;
     } else {
-      w = width / 50;
+      w = (width / 50) + 5.0;
     }
-    // print(width / 50); // 109 124 precipProbability windSpeed
-    // final w = width / 50;
     return Provider.of<CitiesProvider>(context).listCities.isEmpty
         ? Container()
         : Provider.of<CitiesProvider>(context).busyAll
-            ? CircularProgressIndicator()
+            ? Container() //CircularProgressIndicator()
             : Stack(
                 children: <Widget>[
                   pos(
@@ -63,7 +56,7 @@ class _MapWidState extends State<MapWid> {
                   pos(
                     77 + w,
                     110 + (w / 2),
-                    "جيفا",
+                    "حيفا",
                     temp:
                         swii(Provider.of<CitiesProvider>(context).butonat, 13),
                     img: getIco(Provider.of<CitiesProvider>(context)
@@ -72,8 +65,8 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    84 + w,
-                    130 + (w / 2),
+                    84 + w * 1.3,
+                    130 + (w * 1.2),
                     "الناصرة",
                     temp:
                         swii(Provider.of<CitiesProvider>(context).butonat, 20),
@@ -83,7 +76,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    106 + w,
+                    106 + w * 1.3,
                     121 + (w / 2),
                     "جنين",
                     temp:
@@ -94,7 +87,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    115 + w,
+                    115 + w * 1.3,
                     146 + (w / 2),
                     "بيسان",
                     temp:
@@ -105,7 +98,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    134 + w,
+                    134 + w * 1.3,
                     118 + (w / 2),
                     "طولكرم",
                     temp:
@@ -116,7 +109,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    141 + w,
+                    141 + w * 1.5,
                     145 + (w / 2),
                     "طوباس",
                     temp:
@@ -127,7 +120,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    157 + w,
+                    157 + w * 1.5,
                     115 + (w / 2),
                     "قلقيلية",
                     temp:
@@ -138,7 +131,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    165 + w,
+                    165 + w * 1.5,
                     145 + (w / 2),
                     "نابلس",
                     temp:
@@ -149,7 +142,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    177 + w,
+                    177 + w * 2,
                     113 + (w / 2),
                     "سلفيت",
                     temp:
@@ -171,7 +164,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    187 + (w * 1.5),
+                    187 + w * 2,
                     150 + (w / 2),
                     "اريحا",
                     temp:
@@ -182,7 +175,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    196 + (w * 1.5),
+                    196 + w * 2.5,
                     118 + (w / 2),
                     "رام الله",
                     temp:
@@ -215,7 +208,7 @@ class _MapWidState extends State<MapWid> {
                   ),
                   //
                   pos(
-                    238 + (w * 5),
+                    238 + (w * 3),
                     40 - (w / 2),
                     "خان يونس",
                     temp:
@@ -238,7 +231,7 @@ class _MapWidState extends State<MapWid> {
                   //
                   pos(
                     280 + (w * 3),
-                    49 - w,
+                    49,
                     "رفح",
                     temp:
                         swii(Provider.of<CitiesProvider>(context).butonat, 135),

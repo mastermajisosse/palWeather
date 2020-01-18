@@ -1,4 +1,3 @@
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taqspalestine/Providers/CitiesProviders.dart';
@@ -14,42 +13,6 @@ class TaqsDetails extends StatefulWidget {
 
 class _TaqsDetailsState extends State<TaqsDetails> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    testDevices: 'MobileId' != null ? <String>['MobileId'] : null,
-    nonPersonalizedAds: true,
-    keywords: <String>['Game', 'Mario'],
-  );
-
-  BannerAd _bannerAd;
-  InterstitialAd _interstitialAd;
-
-  BannerAd createBannerAd() {
-    return BannerAd(
-        adUnitId: "ca-app-pub-5167234988152277/6098757263",
-        //Change BannerAd adUnitId with Admob ID
-        size: AdSize.banner,
-        targetingInfo: targetingInfo,
-        listener: (MobileAdEvent event) {
-          print("BannerAd $event");
-        });
-  }
-
-  @override
-  void initState() {
-    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
-    //Change appId With Admob Id
-    _bannerAd = createBannerAd()
-      ..load()
-      ..show();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _bannerAd.dispose();
-    _interstitialAd.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

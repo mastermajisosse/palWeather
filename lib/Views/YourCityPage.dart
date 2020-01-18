@@ -1,4 +1,3 @@
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 import 'package:taqspalestine/Utils/Mydrawer.dart';
@@ -11,19 +10,6 @@ class YourCityPage extends StatefulWidget {
 }
 
 class _YourCityPageState extends State<YourCityPage> {
-  @override
-  void initState() {
-    super.initState();
-    Ads.initialize();
-    Ads.showBannerAd();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    Ads.hideBannerAd();
-  }
-
   Widget appBarTitle = Text(
     "أكتب اسم مدينتك",
     style: TextStyle(color: Colors.white),
@@ -34,30 +20,6 @@ class _YourCityPageState extends State<YourCityPage> {
   );
   final key = GlobalKey<ScaffoldState>();
   final TextEditingController _searchQuery = TextEditingController();
-  List<String> _list = [
-    'عكا',
-    'صفد',
-    'حيفا',
-    'الناصرة',
-    'جنين',
-    'بيسان',
-    'طولكرم',
-    'طوباس',
-    'قلقيلية',
-    'نابلس',
-    'سلفيت',
-    'يافا',
-    'اريحا',
-    'رام الله',
-    'القدس',
-    'غزة',
-    'بيت لحم',
-    'خان يونس',
-    'رفح',
-    'الخليل',
-    'بئر السبع',
-    'طبريا',
-  ];
 
   List<String> allcities = Appconfig.allcities;
   bool isSearching = false;
@@ -154,7 +116,26 @@ class _YourCityPageState extends State<YourCityPage> {
                             Navigator.pushReplacementNamed(context, '/');
                           });
                         },
-                        child: ChildItem(contact),
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              trailing: Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: Text(
+                                  // "222",
+                                  contact,
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: MyColo.color_bodyDark),
+                                ),
+                              ),
+                            ),
+                            Divider(
+                              color: MyColo.color_bodyDark,
+                            ),
+                          ],
+                        ),
                       ),
                     ))
                 .values
@@ -163,10 +144,36 @@ class _YourCityPageState extends State<YourCityPage> {
     );
   }
 
-  List<ChildItem> _buildSearchList() {
+  List _buildSearchList() {
     if (_searchText.isEmpty) {
       return Appconfig.fuckingAllAr
-          .map((contact) => ChildItem(contact))
+          .asMap()
+          .map((i, contact) {
+            return MapEntry(
+              i,
+              Column(
+                children: <Widget>[
+                  ListTile(
+                    trailing: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Text(
+                        // "222",
+                        contact,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: MyColo.color_bodyDark),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: MyColo.color_bodyDark,
+                  ),
+                ],
+              ),
+            );
+          })
+          .values
           .toList();
     } else {
       List<String> _searchList = List();
@@ -176,7 +183,48 @@ class _YourCityPageState extends State<YourCityPage> {
           _searchList.add(name);
         }
       }
-      return _searchList.map((contact) => ChildItem(contact)).toList();
+      return _searchList
+          .asMap()
+          .map((i, contact) {
+            return MapEntry(
+              i,
+              Column(
+                children: <Widget>[
+                  ListTile(
+                    onTap: () {
+                      contact.toLowerCase();
+                      var id = Appconfig.fuckingAllAr.indexOf(contact);
+
+                      setState(() {
+                        Appconfig.prefs
+                            .setString('cityGeo', Appconfig.fuckingAllGeo[id]);
+
+                        Appconfig.prefs
+                            .setString(Appconfig.cityNameArabic, contact);
+                        Navigator.pushReplacementNamed(context, '/');
+                      });
+                    },
+                    trailing: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Text(
+                        // "222",
+                        contact,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: MyColo.color_bodyDark),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: MyColo.color_bodyDark,
+                  ),
+                ],
+              ),
+            );
+          })
+          .values
+          .toList();
     }
   }
 
@@ -202,29 +250,18 @@ class _YourCityPageState extends State<YourCityPage> {
   }
 }
 
-class ChildItem extends StatelessWidget {
-  final String name;
-  ChildItem(this.name);
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ListTile(
-          trailing: Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: Text(
-              this.name,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: MyColo.color_bodyDark),
-            ),
-          ),
-        ),
-        Divider(
-          color: MyColo.color_bodyDark,
-        ),
-      ],
-    );
-  }
-}
+// class ChildItem extends StatefulWidget {
+//   final String name;
+//   final int geo;
+//   ChildItem(this.name, {this.geo});
+
+//   @override
+//   _ChildItemState createState() => _ChildItemState();
+// }
+
+// class _ChildItemState extends State<ChildItem> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return
+//   }
+// }

@@ -37,10 +37,8 @@ class MyDrawer {
               txt(
                   "assets/icons/drawer2.png",
                   "الطقس بالخريطة",
-                  () => Navigator.pushReplacementNamed(context, '/')
-                          .then((value) {
-                        Ads.hideBannerAd();
-                      })),
+                  () => Navigator.pushReplacementNamed(context, '/Home')
+                      .then((value) {})),
               txt("assets/icons/calendar.png", "الطقس بالتفصيل",
                   () => Navigator.pushReplacementNamed(context, '/detail')),
               txt("assets/icons/graph.png", "الرسوم البيانية",

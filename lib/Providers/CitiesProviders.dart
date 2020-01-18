@@ -37,8 +37,6 @@ class CitiesProvider extends ChangeNotifier {
   List _allCities = List();
   get allCities => _allCities;
 
-  // get mycity => myCity;
-
   Future getCities() async {
     // if (_listCities.isNotEmpty) return _listCities;
     if (Appconfig.prefs.getString('cityGeo') == null) {
@@ -52,8 +50,6 @@ class CitiesProvider extends ChangeNotifier {
     busy = true;
 
     await dataCityService.getLists(myCityGeo).then((data) {
-      // print("object");
-
       if (data == null) print("empty list");
       _listCities = data;
       busy = false;
@@ -81,7 +77,7 @@ class CitiesProvider extends ChangeNotifier {
   }
 
   allTwentyone() async {
-    // if (_allCities.isNotEmpty) return _allCities;
+    if (_allCities.isNotEmpty) return _allCities;
     _busyAll = true;
 
     await _allcitiesdata.all21().then((data) {
@@ -207,8 +203,6 @@ class CitiesProvider extends ChangeNotifier {
             : dateHour(
                 DateTime.fromMillisecondsSinceEpoch(l.sunsetTime.toInt() * 1000)
                     .toString());
-      default:
-        return "a";
     }
   }
 

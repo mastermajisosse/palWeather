@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:taqspalestine/Models/CityModel.dart';
 import 'package:taqspalestine/Models/HourlyModel.dart';
 import 'package:taqspalestine/Models/darkSkyDaily.dart';
 import 'package:taqspalestine/Services/Api.dart';
@@ -15,11 +14,13 @@ class DataCityService {
   }
   Api api = Api();
 
-  List listModel = List();
-  List hourModel = List();
+  List listModel;
+  List hourModel;
   // List<CityModel> cities = new List();
 
   Future getLists(dynamic citynum) async {
+    listModel = List();
+
     await api.httpGet('forecast/6077a3ce319a0b8acd55d08f087660da/' + citynum,
         query: {
           'exclude': 'minutely,flags',
@@ -28,18 +29,19 @@ class DataCityService {
         }).then((reponse) {
       var data = jsonDecode(reponse.body);
       var temp = data["currently"]['temperature'];
-      print(temp.toString());
+      // print(temp.toString());
       Appconfig.prefs.setDouble('currentTemp', temp);
       var daily = data["daily"]['data'];
-      // print(daily[0]);
       daily.forEach((l) {
         listModel.add(DarkSkyDaily().fromJson(l));
       });
+      print(listModel[1].tempMinRound().toString());
     });
     return listModel;
   }
 
   Future getHourly(citynum) async {
+    hourModel = List();
     await api.httpGet('forecast/6077a3ce319a0b8acd55d08f087660da/' + citynum,
         query: {
           'exclude': 'minutely,flags',
@@ -48,7 +50,7 @@ class DataCityService {
         }).then((reponse) {
       var data = jsonDecode(reponse.body);
       var daily = data["hourly"]['data'];
-      print(daily[0]);
+      // print(daily[0]);
       daily.forEach((l) {
         hourModel.add(Hourly().fromJson(l));
       });

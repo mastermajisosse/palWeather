@@ -13,6 +13,7 @@ class Appconfig {
   static const String cityNameArabic = "gaza";
 
   static const String unit = "ca";
+  static const String vent = "mph";
 
   screens() {
     switch (1) {

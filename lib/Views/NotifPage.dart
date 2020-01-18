@@ -33,10 +33,10 @@ class _NotifPageState extends State<NotifPage>
 
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  String dropdownValue = 'C';
-  String dropdownValue2 = 'mph';
-
   String apo = "°";
+
+  String dropdownValue = 'ca';
+  String dropdownValue2 = 'mph';
 
   @override
   Widget build(BuildContext context) {
@@ -150,23 +150,25 @@ class _NotifPageState extends State<NotifPage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           DropdownButton<String>(
-                            value: dropdownValue,
+                            value: Appconfig.prefs.getString(Appconfig.unit) ??
+                                'ca',
                             onChanged: (String newValue) {
                               setState(() {
-                                dropdownValue = newValue;
-                                print(dropdownValue);
-                                Appconfig.prefs.setString(Appconfig.unit,
-                                    dropdownValue == 'C' ? "ca" : "us");
+                                Appconfig.prefs.setString(
+                                  Appconfig.unit,
+                                  newValue,
+                                );
+
                                 print(
                                     Appconfig.prefs.getString(Appconfig.unit));
                               });
                             },
-                            items: <String>['C', 'F']
+                            items: <String>['ca', 'us']
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(
-                                  value + apo,
+                                  value,
                                   style: TextStyle(
                                       color: Colors.redAccent, fontSize: 24),
                                 ),
@@ -187,10 +189,14 @@ class _NotifPageState extends State<NotifPage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           DropdownButton<String>(
-                            value: dropdownValue2,
+                            value: Appconfig.prefs.getString(Appconfig.vent) ??
+                                'mph',
                             onChanged: (String newValue) {
                               setState(() {
-                                dropdownValue2 = newValue;
+                                Appconfig.prefs.setString(
+                                  Appconfig.vent,
+                                  newValue,
+                                );
                               });
                             },
                             items: <String>['kmph', 'mph']

@@ -1,6 +1,7 @@
+import 'dart:async';
 import 'dart:io';
 
-import 'package:firebase_admob/firebase_admob.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taqspalestine/Providers/CitiesProviders.dart';
@@ -13,6 +14,7 @@ import 'package:taqspalestine/Views/FirstPage/BottomB.dart';
 import 'package:taqspalestine/Views/FirstPage/PageVieww.dart';
 import 'package:taqspalestine/Views/FirstPage/Rightwind.dart';
 import 'package:taqspalestine/Views/FirstPage/calendar.dart';
+import 'package:taqspalestine/test_connection.dart';
 
 class FirstPage extends StatefulWidget {
   @override
@@ -23,28 +25,54 @@ class _FirstPageState extends State<FirstPage> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   bool conected = true;
 
-  conect() async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        print('connected');
-      }
-    } on SocketException catch (_) {
-      print('not connected');
-      conected = false;
+  // conect() async {
+  //   try {
+  //     final result = await InternetAddress.lookup('google.com');
+  //     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+  //       print('connected');
+  //     }
+  //   } on SocketException catch (_) {
+  //     print('not connected');
+  //     conected = false;
 
-      setState(() {
-        Provider.of<CitiesProvider>(context, listen: false).busy = false;
-        Provider.of<CitiesProvider>(context, listen: false).busyAll = false;
-      });
-    }
+  //     setState(() {
+  //       Provider.of<CitiesProvider>(context, listen: false).busy = false;
+  //       Provider.of<CitiesProvider>(context, listen: false).busyAll = false;
+  //     });
+  //   }
+  // }
+
+  var _conectionStatus = 'unknown';
+  Connectivity connectivity;
+  StreamSubscription<ConnectivityResult> subscription;
+
+  DateTime date = DateTime.now();
+
+  testCon() {
+    connectivity = new Connectivity();
+    // print("object");
+    subscription =
+        connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.none) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Conectivety()),
+        );
+        conected = false;
+      } else {
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => FirstPage()),
+        // );
+      }
+    });
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    conect();
+    testCon();
   }
 
   @override

@@ -4,17 +4,21 @@ import 'package:taqspalestine/Providers/CitiesProviders.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 import 'package:taqspalestine/Utils/getIcons.dart';
 
-class BottomB extends StatelessWidget {
+class BottomB extends StatefulWidget {
   List proList = List();
   BottomB(this.proList);
 
   @override
+  _BottomBState createState() => _BottomBState();
+}
+
+class _BottomBState extends State<BottomB> {
+  @override
   Widget build(BuildContext context) {
-    // print(proList.summary)
     return Provider.of<CitiesProvider>(context).busy
         ? Container(
             alignment: Alignment.bottomCenter,
-            child: CircularProgressIndicator(),
+            // child: CircularProgressIndicator(),
           )
         : Provider.of<CitiesProvider>(context).listCities.isEmpty
             ? Container()
@@ -49,7 +53,7 @@ class BottomB extends StatelessWidget {
                                   child: Text(
                                     "غروب الشمس \n" +
                                         Provider.of<CitiesProvider>(context)
-                                            .botttomChange(proList[0],
+                                            .botttomChange(widget.proList[0],
                                                 rise: false),
                                     style: TextStyle(
                                         color: Colors.white,
@@ -71,7 +75,7 @@ class BottomB extends StatelessWidget {
                                     child: Text(
                                       "شروق الشمس \n" +
                                           Provider.of<CitiesProvider>(context)
-                                              .botttomChange(proList[0],
+                                              .botttomChange(widget.proList[0],
                                                   rise: true),
                                       style: TextStyle(
                                           color: MyColo.color_NavDark,
@@ -139,7 +143,7 @@ class BottomB extends StatelessWidget {
                       width: 40,
                       height: 40,
                       child: Provider.of<CitiesProvider>(context)
-                          .imageChange(getIco(proList[i].icon)),
+                          .imageChange(getIco(widget.proList[i].icon)),
                     ),
                   ),
                   Positioned(
@@ -149,9 +153,11 @@ class BottomB extends StatelessWidget {
                       // proList[i].tempMinRound() +
                       //     Provider.of<CitiesProvider>(context).ramzChange(),
                       // '22',
-                      Provider.of<CitiesProvider>(context)
-                              .botttomChange(proList[i], rise: true) +
-                          Provider.of<CitiesProvider>(context).ramzChange(),
+                      Provider.of<CitiesProvider>(context).botttomChange(
+                            widget.proList[i],
+                            rise: true,
+                          ) +
+                          "°",
                       style: TextStyle(
                         color: Colors.white,
                         height: .5,
@@ -168,9 +174,11 @@ class BottomB extends StatelessWidget {
                               Provider.of<CitiesProvider>(context).butonat ==
                                   'c'
                           ? ''
-                          : Provider.of<CitiesProvider>(context)
-                                  .botttomChange(proList[i], rise: false) +
-                              Provider.of<CitiesProvider>(context).ramzChange(),
+                          : Provider.of<CitiesProvider>(context).botttomChange(
+                                widget.proList[i],
+                                rise: false,
+                              ) +
+                              "°",
                       // '22',
                       style: TextStyle(
                           color: Colors.white,
