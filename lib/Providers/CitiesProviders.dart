@@ -37,8 +37,10 @@ class CitiesProvider extends ChangeNotifier {
   List _allCities = List();
   get allCities => _allCities;
 
-  Future getCities() async {
-    // if (_listCities.isNotEmpty) return _listCities;
+  Future getCities({f: false}) async {
+    if (_listCities.isNotEmpty && f == false) return _listCities;
+    _listCities.clear();
+    print("object");
     if (Appconfig.prefs.getString('cityGeo') == null) {
       print('no');
       Appconfig.prefs.setString(Appconfig.cityNameArabic, "غزة");
@@ -57,7 +59,9 @@ class CitiesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future getHourly() async {
+  Future getHourly({f: false}) async {
+    if (_listHourly.isNotEmpty && f == false) return _listHourly;
+    _listCities.clear();
     busy = true;
 
     await dataCityService.getHourly(myCityGeo).then((data) {

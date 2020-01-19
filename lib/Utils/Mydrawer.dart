@@ -35,10 +35,12 @@ class MyDrawer {
                 ),
               ),
               txt(
-                  "assets/icons/drawer2.png",
-                  "الطقس بالخريطة",
-                  () => Navigator.pushReplacementNamed(context, '/Home')
-                      .then((value) {})),
+                "assets/icons/drawer2.png",
+                "الطقس بالخريطة",
+                () {
+                  Navigator.pushReplacementNamed(context, '/Home');
+                },
+              ),
               txt("assets/icons/calendar.png", "الطقس بالتفصيل",
                   () => Navigator.pushReplacementNamed(context, '/detail')),
               txt("assets/icons/graph.png", "الرسوم البيانية",

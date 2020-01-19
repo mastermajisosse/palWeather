@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 
 class ApBar {
-  static Widget appb(context, scaffoldKey) => PreferredSize(
+  static Widget appb(
+    context,
+    scaffoldKey,
+  ) =>
+      PreferredSize(
         child: Container(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           decoration: BoxDecoration(
@@ -23,13 +27,14 @@ class ApBar {
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: IconButton(
-                    icon: Icon(
-                      Icons.clear_all, // menu
-                      size: 32,
-                      color: Colors.white,
-                    ),
-                    onPressed: () => scaffoldKey.currentState.openDrawer(),
-                  ),
+                      icon: Icon(
+                        Icons.clear_all, // menu
+                        size: 32,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        scaffoldKey.currentState.openDrawer();
+                      }),
                 ),
                 Text(
                   "طقس فلسطين",

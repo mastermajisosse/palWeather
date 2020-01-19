@@ -1,7 +1,9 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:taqspalestine/Utils/Appb.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 import 'package:taqspalestine/Utils/Mydrawer.dart';
+import 'package:taqspalestine/Utils/admob.dart';
 
 class AboutPage extends StatefulWidget {
   @override
@@ -15,6 +17,22 @@ class _AboutPageState extends State<AboutPage> {
       'بإعجابكم وسعي الى افادتكم بكل ما له علاقة في احوال طقس دولتنا الحبيبة';
 
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+  BannerAd bannerAd;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    bannerAd = Ads.createBannerAd();
+    bannerAd
+      ..load()
+      ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bannerAd.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

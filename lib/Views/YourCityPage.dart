@@ -1,3 +1,4 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 import 'package:taqspalestine/Utils/Mydrawer.dart';
@@ -39,6 +40,22 @@ class _YourCityPageState extends State<YourCityPage> {
         });
       }
     });
+  }
+  BannerAd bannerAd;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    bannerAd = Ads.createBannerAd();
+    bannerAd
+      ..load()
+      ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bannerAd.dispose();
   }
 
   @override

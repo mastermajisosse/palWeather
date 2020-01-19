@@ -150,7 +150,7 @@ class _GraphPageState extends State<GraphPage> {
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0),
+          padding: EdgeInsets.symmetric(vertical: 4.0),
           child: Container(
             child: Text(
               Appconfig.prefs.getString(Appconfig.cityNameArabic) +

@@ -1,7 +1,9 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:taqspalestine/Utils/Appb.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 import 'package:taqspalestine/Utils/Mydrawer.dart';
+import 'package:taqspalestine/Utils/admob.dart';
 
 class GeneralPage extends StatefulWidget {
   @override
@@ -18,10 +20,11 @@ class _GeneralPageState extends State<GeneralPage>
   ValueChanged<bool> onChanged;
   Color activeColor = Colors.lightBlue;
   Color disactivatColor = Colors.white70;
-
+  BannerAd bannerAd;
   @override
   void initState() {
     super.initState();
+    // Ads.c
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 60));
     _circleAnimation = AlignmentTween(
@@ -29,6 +32,16 @@ class _GeneralPageState extends State<GeneralPage>
             end: value ? Alignment.centerLeft : Alignment.centerRight)
         .animate(CurvedAnimation(
             parent: _animationController, curve: Curves.linear));
+    bannerAd = Ads.createBannerAd();
+    bannerAd
+      ..load()
+      ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bannerAd.dispose();
   }
 
   @override
@@ -53,6 +66,8 @@ class _GeneralPageState extends State<GeneralPage>
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            // RaisedButton(
+            //     onPressed: () => Ads.hideBannerAd(), child: Container()),
             SizedBox(height: height / 20),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,

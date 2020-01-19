@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:taqspalestine/Providers/CitiesProviders.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 
 class Splashs extends StatefulWidget {
@@ -27,6 +29,11 @@ class _SplashsState extends State<Splashs> with SingleTickerProviderStateMixin {
 
     radius = widget.radius;
     dotRadius = widget.dotRadius;
+    setState(() {
+      Provider.of<CitiesProvider>(context, listen: false).getCities(f: true);
+      Provider.of<CitiesProvider>(context, listen: false).getHourly(f: true);
+      Provider.of<CitiesProvider>(context, listen: false).allTwentyone();
+    });
 
     print(dotRadius);
 

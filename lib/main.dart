@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:taqspalestine/Utils/MyColo.dart';
 import 'package:taqspalestine/Utils/Taqs.dart';
+import 'package:taqspalestine/Utils/admob.dart';
 import 'package:taqspalestine/Utils/localNotif.dart';
 import 'package:taqspalestine/Utils/locator.dart';
 import 'package:taqspalestine/Views/AboutPage.dart';
@@ -15,7 +16,6 @@ import 'package:taqspalestine/Views/TaqsDetail.dart';
 import 'package:taqspalestine/Views/YourCityPage.dart';
 import 'package:taqspalestine/Views/splash.dart';
 import 'package:taqspalestine/provider_setup.dart';
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:taqspalestine/test_connection.dart';
 
 Future main() async {
@@ -40,7 +40,7 @@ Future main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  // Admob.initialize(getAppId());
+
   return runApp(MyApp());
 }
 
@@ -64,6 +64,13 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Ads.initialize();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

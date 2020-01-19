@@ -25,23 +25,6 @@ class _FirstPageState extends State<FirstPage> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   bool conected = true;
 
-  // conect() async {
-  //   try {
-  //     final result = await InternetAddress.lookup('google.com');
-  //     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-  //       print('connected');
-  //     }
-  //   } on SocketException catch (_) {
-  //     print('not connected');
-  //     conected = false;
-
-  //     setState(() {
-  //       Provider.of<CitiesProvider>(context, listen: false).busy = false;
-  //       Provider.of<CitiesProvider>(context, listen: false).busyAll = false;
-  //     });
-  //   }
-  // }
-
   var _conectionStatus = 'unknown';
   Connectivity connectivity;
   StreamSubscription<ConnectivityResult> subscription;
@@ -59,11 +42,6 @@ class _FirstPageState extends State<FirstPage> {
           MaterialPageRoute(builder: (context) => Conectivety()),
         );
         conected = false;
-      } else {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => FirstPage()),
-        // );
       }
     });
   }
@@ -71,6 +49,7 @@ class _FirstPageState extends State<FirstPage> {
   @override
   void initState() {
     // TODO: implement initState
+
     super.initState();
     testCon();
   }
@@ -79,6 +58,7 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return BaseWidget<CitiesProvider>(
         onModelReady: (provider) {
           provider.getCities();
@@ -87,8 +67,13 @@ class _FirstPageState extends State<FirstPage> {
         },
         builder: (context, provider, child) => Scaffold(
               key: scaffoldKey,
-              appBar: ApBar.appb(context, scaffoldKey),
-              drawer: MyDrawer.myDrawer(context),
+              appBar: ApBar.appb(
+                context,
+                scaffoldKey,
+              ),
+              drawer: InkWell(
+                  onTap: () => Ads.hideBannerAd(),
+                  child: MyDrawer.myDrawer(context)),
               body: Container(
                 height: height,
                 width: width,
