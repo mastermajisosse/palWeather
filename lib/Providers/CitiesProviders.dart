@@ -81,8 +81,9 @@ class CitiesProvider extends ChangeNotifier {
   }
 
   allTwentyone() async {
-    if (_allCities.isNotEmpty) return _allCities;
+    // if (_allCities.isNotEmpty) return _allCities;
     _busyAll = true;
+    _allCities.clear();
 
     await _allcitiesdata.all21().then((data) {
       if (data == null) print("empty list");

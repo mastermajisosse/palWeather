@@ -32,17 +32,17 @@ class _GeneralPageState extends State<GeneralPage>
             end: value ? Alignment.centerLeft : Alignment.centerRight)
         .animate(CurvedAnimation(
             parent: _animationController, curve: Curves.linear));
-    bannerAd = Ads.createBannerAd();
-    bannerAd
-      ..load()
-      ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+    // bannerAd = Ads.createBannerAd();
+    // bannerAd
+    //   ..load()
+    //   ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    bannerAd.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   bannerAd.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

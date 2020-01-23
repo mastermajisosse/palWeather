@@ -38,7 +38,8 @@ class _MapWidState extends State<MapWid> {
                     45 + w,
                     124 + (w / 2),
                     "عكا",
-                    temp: swii(Provider.of<CitiesProvider>(context).butonat, 0),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 0, i),
                     img: getIco(
                         Provider.of<CitiesProvider>(context).allCities[i].icon),
                   ),
@@ -47,9 +48,10 @@ class _MapWidState extends State<MapWid> {
                     62 + w,
                     141 + (w / 2),
                     "صفد",
-                    temp: swii(Provider.of<CitiesProvider>(context).butonat, 6),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 8, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 7]
+                        .allCities[i + 8]
                         .icon),
                   ),
                   //
@@ -57,10 +59,10 @@ class _MapWidState extends State<MapWid> {
                     77 + w,
                     110 + (w / 2),
                     "حيفا",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 13),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 16, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 14]
+                        .allCities[i + 16]
                         .icon),
                   ),
                   //
@@ -68,10 +70,10 @@ class _MapWidState extends State<MapWid> {
                     84 + w * 1.3,
                     130 + (w * 1.2),
                     "الناصرة",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 20),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 24, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 21]
+                        .allCities[i + 24]
                         .icon),
                   ),
                   //
@@ -79,10 +81,10 @@ class _MapWidState extends State<MapWid> {
                     106 + w * 1.3,
                     121 + (w / 2),
                     "جنين",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 27),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 32, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 28]
+                        .allCities[i + 32]
                         .icon),
                   ),
                   //
@@ -90,10 +92,10 @@ class _MapWidState extends State<MapWid> {
                     115 + w * 1.3,
                     146 + (w / 2),
                     "بيسان",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 34),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 40, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 35]
+                        .allCities[i + 40]
                         .icon),
                   ),
                   //
@@ -101,10 +103,10 @@ class _MapWidState extends State<MapWid> {
                     134 + w * 1.3,
                     118 + (w / 2),
                     "طولكرم",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 41),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 48, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 42]
+                        .allCities[i + 48]
                         .icon),
                   ),
                   //
@@ -112,10 +114,10 @@ class _MapWidState extends State<MapWid> {
                     141 + w * 1.5,
                     145 + (w / 2),
                     "طوباس",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 48),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 56, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 49]
+                        .allCities[i + 56]
                         .icon),
                   ),
                   //
@@ -123,10 +125,10 @@ class _MapWidState extends State<MapWid> {
                     157 + w * 1.5,
                     115 + (w / 2),
                     "قلقيلية",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 55),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 64, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 56]
+                        .allCities[i + 64]
                         .icon),
                   ),
                   //
@@ -134,10 +136,10 @@ class _MapWidState extends State<MapWid> {
                     165 + w * 1.5,
                     145 + (w / 2),
                     "نابلس",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 62),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 72, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 63]
+                        .allCities[i + 72]
                         .icon),
                   ),
                   //
@@ -145,10 +147,10 @@ class _MapWidState extends State<MapWid> {
                     177 + w * 2,
                     113 + (w / 2),
                     "سلفيت",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 69),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 80, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 70]
+                        .allCities[i + 80]
                         .icon),
                   ),
                   //
@@ -156,10 +158,10 @@ class _MapWidState extends State<MapWid> {
                     170 + (w * 1.5),
                     85 + (w / 2),
                     "يافا",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 76),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 88, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 77]
+                        .allCities[i + 88]
                         .icon),
                   ),
                   //
@@ -167,10 +169,10 @@ class _MapWidState extends State<MapWid> {
                     187 + w * 2,
                     150 + (w / 2),
                     "اريحا",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 83),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 96, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 84]
+                        .allCities[i + 96]
                         .icon),
                   ),
                   //
@@ -178,10 +180,10 @@ class _MapWidState extends State<MapWid> {
                     196 + w * 2.5,
                     118 + (w / 2),
                     "رام الله",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 90),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 104, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 91]
+                        .allCities[i + 104]
                         .icon),
                   ),
                   //
@@ -189,10 +191,10 @@ class _MapWidState extends State<MapWid> {
                     215 + (w * 3),
                     117,
                     "القدس",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 97),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 112, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 98]
+                        .allCities[i + 112]
                         .icon),
                   ),
                   //
@@ -200,10 +202,10 @@ class _MapWidState extends State<MapWid> {
                     215 + (w * 3),
                     59 + (w / 2),
                     "غزة",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 114),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 120, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 105]
+                        .allCities[i + 120]
                         .icon),
                   ),
                   //
@@ -211,10 +213,10 @@ class _MapWidState extends State<MapWid> {
                     238 + (w * 3),
                     40 - (w / 2),
                     "خان يونس",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 121),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 128, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 112]
+                        .allCities[i + 128]
                         .icon),
                   ),
                   //
@@ -222,10 +224,10 @@ class _MapWidState extends State<MapWid> {
                     239 + (w * 3),
                     103 - (w / 3),
                     "بيت لحم",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 128),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 136, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 119]
+                        .allCities[i + 136]
                         .icon),
                   ),
                   //
@@ -233,10 +235,10 @@ class _MapWidState extends State<MapWid> {
                     280 + (w * 3),
                     49,
                     "رفح",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 135),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 144, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 126]
+                        .allCities[i + 144]
                         .icon),
                   ),
                   //
@@ -244,10 +246,10 @@ class _MapWidState extends State<MapWid> {
                     275 + (w * 3),
                     120,
                     "الخليل",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 142),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 152, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 133]
+                        .allCities[i + 152]
                         .icon),
                   ),
                   //
@@ -255,10 +257,10 @@ class _MapWidState extends State<MapWid> {
                     295 + (w * 3.5),
                     95,
                     "بئر السبع",
-                    temp:
-                        swii(Provider.of<CitiesProvider>(context).butonat, 149),
+                    temp: swii(
+                        Provider.of<CitiesProvider>(context).butonat, 160, i),
                     img: getIco(Provider.of<CitiesProvider>(context)
-                        .allCities[i + 140]
+                        .allCities[i + 160]
                         .icon),
                   ),
                 ],
@@ -269,7 +271,7 @@ class _MapWidState extends State<MapWid> {
     double to,
     double lef,
     cityname, {
-    temp = "25",
+    temp = "0",
     img,
   }) {
     return Stack(
@@ -321,7 +323,7 @@ class _MapWidState extends State<MapWid> {
     );
   }
 
-  swii(but, n) {
+  swii(but, n, i) {
     switch (but) {
       case 'b':
         return Provider.of<CitiesProvider>(context)
@@ -334,8 +336,12 @@ class _MapWidState extends State<MapWid> {
             .precipPrb();
       default:
         return Provider.of<CitiesProvider>(context)
-            .allCities[i + n]
-            .tempRound();
+                .allCities[i + n]
+                .tempMaxRound() +
+            " " +
+            Provider.of<CitiesProvider>(context)
+                .allCities[i + n]
+                .tempMinRound();
     }
   }
   // Widget posico(double to, double lef, txt) {

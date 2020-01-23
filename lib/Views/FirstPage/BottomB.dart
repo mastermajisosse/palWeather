@@ -15,6 +15,8 @@ class BottomB extends StatefulWidget {
 class _BottomBState extends State<BottomB> {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+
     return Provider.of<CitiesProvider>(context).busy
         ? Container(
             alignment: Alignment.bottomCenter,
@@ -22,51 +24,54 @@ class _BottomBState extends State<BottomB> {
           )
         : Provider.of<CitiesProvider>(context).listCities.isEmpty
             ? Container()
-            : Positioned(
-                bottom: 0,
-                right: 0,
-                left: 0,
+            : Container(
+                height: height / 1.2,
+                alignment: Alignment.bottomCenter,
                 child: Provider.of<CitiesProvider>(context).butonat == 'd'
                     ? Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15,
+                          horizontal: 20,
+                        ),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.yellow[800],
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          width: 200,
+                          width: double.infinity,
                           height: 70,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
-                              Container(
-                                height: 70,
-                                width: 190,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF212121),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "غروب الشمس \n" +
-                                        Provider.of<CitiesProvider>(context)
-                                            .botttomChange(widget.proList[0],
-                                                rise: false),
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        height: 1.2,
-                                        fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center,
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF212121),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "غروب الشمس \n" +
+                                          Provider.of<CitiesProvider>(context)
+                                              .botttomChange(widget.proList[0],
+                                                  rise: false),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          height: 1.2,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
                               Expanded(
+                                flex: 1,
                                 child: Container(
                                   height: 70,
-                                  // width: 185,
                                   decoration: BoxDecoration(
                                     // color: Colors.yellow[700],
                                     borderRadius: BorderRadius.circular(10),

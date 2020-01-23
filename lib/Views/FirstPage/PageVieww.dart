@@ -65,7 +65,7 @@ class _PageViewwState extends State<PageVieww> {
           },
         ),
         Container(
-          height: w ? height / 1.41 : height / 1.35,
+          height: w ? height / 1.49 : height / 1.47,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.end,

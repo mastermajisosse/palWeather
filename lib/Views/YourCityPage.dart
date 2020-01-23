@@ -41,22 +41,22 @@ class _YourCityPageState extends State<YourCityPage> {
       }
     });
   }
-  BannerAd bannerAd;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    bannerAd = Ads.createBannerAd();
-    bannerAd
-      ..load()
-      ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
-  }
+  // BannerAd bannerAd;
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   bannerAd = Ads.createBannerAd();
+  //   bannerAd
+  //     ..load()
+  //     ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+  // }
 
-  @override
-  void dispose() {
-    super.dispose();
-    bannerAd.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   bannerAd.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

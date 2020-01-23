@@ -27,7 +27,7 @@ dependencies:
   dots_indicator: ^1.1.0
   auto_size_text: ^2.1.0
   responsive_widgets: ^0.1.10
-  flutter_local_notifications:
+  flutter_local_notifications: ^1.1.2
   path_provider:
   firebase_admob: ^0.9.0+10
 

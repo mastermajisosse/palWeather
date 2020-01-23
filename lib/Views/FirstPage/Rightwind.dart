@@ -19,7 +19,7 @@ class _RightWState extends State<RightW> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Container(
-      height: height / 1.29,
+      height: height / 1.42,
       child: Stack(
         children: <Widget>[
           rrrb(

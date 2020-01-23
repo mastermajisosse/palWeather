@@ -27,7 +27,7 @@ class Ads {
   static BannerAd createBannerAd() {
     return BannerAd(
       adUnitId: "ca-app-pub-5167234988152277/6098757263",
-      size: AdSize.banner,
+      size: AdSize.smartBanner,
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
         print("BannerAd event $event");

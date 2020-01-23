@@ -23,6 +23,8 @@ class _SplashsState extends State<Splashs> with SingleTickerProviderStateMixin {
   double radius;
   double dotRadius;
 
+  
+
   @override
   void initState() {
     super.initState();

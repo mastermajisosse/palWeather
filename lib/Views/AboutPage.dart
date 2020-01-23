@@ -17,21 +17,21 @@ class _AboutPageState extends State<AboutPage> {
       'بإعجابكم وسعي الى افادتكم بكل ما له علاقة في احوال طقس دولتنا الحبيبة';
 
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-  BannerAd bannerAd;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    bannerAd = Ads.createBannerAd();
-    bannerAd
-      ..load()
-      ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
-  }
+  // BannerAd bannerAd;
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   bannerAd = Ads.createBannerAd();
+  //   bannerAd
+  //     ..load()
+  //     ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+  // }
 
   @override
   void dispose() {
     super.dispose();
-    bannerAd.dispose();
+    // bannerAd.dispose();
   }
 
   @override
