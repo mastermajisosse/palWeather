@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import 'package:taqspalestine/Providers/CitiesProviders.dart';
+import 'package:taqspalestine/Views/FirstPage/FirstPage.dart';
 
 class RightW extends StatefulWidget {
   @override
@@ -9,11 +12,79 @@ class RightW extends StatefulWidget {
 
 class _RightWState extends State<RightW> {
   List<bool> isSelected = List.generate(4, (_) => true);
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  //     FlutterLocalNotificationsPlugin();
+  // var initializationSettingsAndroid;
+  // var initializationSettingsIOS;
+  // var initializationSettings;
+
+  // Future<void> _demoNotification() async {
+  //   var time = Time(10, 0, 0);
+  //   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+  //       'repeatDailyAtTime channel id',
+  //       'repeatDailyAtTime channel name',
+  //       'repeatDailyAtTime description');
+  //   var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+  //   var platformChannelSpecifics = NotificationDetails(
+  //       androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+  //   await flutterLocalNotificationsPlugin.showDailyAtTime(
+  //     0,
+  //     'طقس فلسطين',
+  //     '  .. درجة حرارة اليوم في مدينتك هي '
+  //     +
+  //     Appconfig.prefs.getDouble('currentTemp').round().toString() +
+  //     " درجة مئوية "
+  //     ,
+  //     time,
+  //     platformChannelSpecifics,
+  //     payload: 'test oayload',
+  //   );
+  // }
+
+  // Future onSelectNotification(String payload) async {
+  //   if (payload != null) {
+  //     debugPrint('Notification payload: $payload');
+  //   }
+  //   await Navigator.push(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => FirstPage()),
+  //   );
+  // }
+
+  // Future onDidReceiveLocalNotification(
+  //     int id, String title, String body, String payload) async {
+  //   await showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) => CupertinoAlertDialog(
+  //             title: Text(title),
+  //             content: Text(body),
+  //             actions: <Widget>[
+  //               CupertinoDialogAction(
+  //                 isDefaultAction: true,
+  //                 child: Text('Ok'),
+  //                 onPressed: () async {
+  //                   Navigator.of(context, rootNavigator: true).pop();
+  //                   await Navigator.push(context,
+  //                       MaterialPageRoute(builder: (context) => FirstPage()));
+  //                 },
+  //               )
+  //             ],
+  //           ));
+  // }
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
+  //   initializationSettingsIOS = IOSInitializationSettings(
+  //       onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+  //   initializationSettings = InitializationSettings(
+  //       initializationSettingsAndroid, initializationSettingsIOS);
+  //   flutterLocalNotificationsPlugin.initialize(initializationSettings,
+  //       onSelectNotification: onSelectNotification);
+  //   _demoNotification();
+  // }
 
   @override
   Widget build(BuildContext context) {

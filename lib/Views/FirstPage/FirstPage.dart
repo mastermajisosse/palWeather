@@ -52,74 +52,6 @@ class _FirstPageState extends State<FirstPage> {
 
   BannerAd bannerAd;
 
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
-  var initializationSettingsAndroid;
-  var initializationSettingsIOS;
-  var initializationSettings;
-
-  var newHour = 19;
-  var newM = 01;
-  var time;
-  Future<void> _demoNotification() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'channel_ID', 'channel name', 'channel description',
-        importance: Importance.Max,
-        priority: Priority.High,
-        ticker: 'test ticker');
-
-    var iOSChannelSpecifics = IOSNotificationDetails();
-    var platformChannelSpecifics = NotificationDetails(
-        androidPlatformChannelSpecifics, iOSChannelSpecifics);
-    // var scheduledNotificationDateTime =
-    //     new DateTime.now().add(Duration(seconds: 20));
-    time = DateTime.now();
-    time = new DateTime(time.year, time.month, time.day, newHour, newM,
-        time.second, time.millisecond, time.microsecond);
-
-    await flutterLocalNotificationsPlugin.schedule(
-      0,
-      'طقس فلسطين',
-      'درجة حرارة اليوم في مدينتك هي ' +
-          Appconfig.prefs.getDouble('currentTemp').round().toString() +
-          " درجة مئوية ",
-      time,
-      platformChannelSpecifics,
-      payload: 'test oayload',
-    );
-  }
-
-  Future onSelectNotification(String payload) async {
-    if (payload != null) {
-      debugPrint('Notification payload: $payload');
-    }
-    await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => FirstPage()),
-    );
-  }
-
-  Future onDidReceiveLocalNotification(
-      int id, String title, String body, String payload) async {
-    await showDialog(
-        context: context,
-        builder: (BuildContext context) => CupertinoAlertDialog(
-              title: Text(title),
-              content: Text(body),
-              actions: <Widget>[
-                CupertinoDialogAction(
-                  isDefaultAction: true,
-                  child: Text('Ok'),
-                  onPressed: () async {
-                    Navigator.of(context, rootNavigator: true).pop();
-                    await Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => FirstPage()));
-                  },
-                )
-              ],
-            ));
-  }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -130,15 +62,6 @@ class _FirstPageState extends State<FirstPage> {
     bannerAd
       ..load()
       ..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
-    initializationSettingsAndroid =
-        new AndroidInitializationSettings('app_icon');
-    initializationSettingsIOS = new IOSInitializationSettings(
-        onDidReceiveLocalNotification: onDidReceiveLocalNotification);
-    initializationSettings = new InitializationSettings(
-        initializationSettingsAndroid, initializationSettingsIOS);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: onSelectNotification);
-    _demoNotification();
   }
 
   @override
@@ -176,18 +99,6 @@ class _FirstPageState extends State<FirstPage> {
                     PageVieww(),
                     RightW(),
                     BottomB(provider.listCities),
-                    InkWell(
-                      onTap: () async {
-                        print(1);
-
-                        await _demoNotification();
-                      },
-                      child: Container(
-                        color: Colors.black,
-                        width: 200,
-                        height: 50,
-                      ),
-                    ),
                     conected == false
                         ? Positioned(
                             bottom: 0,
